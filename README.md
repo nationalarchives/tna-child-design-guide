@@ -1,1 +1,1 @@
-Child theme template
+TNA Design Guide child theme
