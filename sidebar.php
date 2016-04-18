@@ -1,7 +1,9 @@
 
 
-<aside id="sidebar" class="col-xs-12 col-sm-4 col-md-4 dg-nav float-left-to-right" role="complementary">
+<aside id="sidebar" class="col-xs-12 col-sm-4 col-md-4 float-left-to-right" role="complementary">
 
+    <div class="dg-nav">
+        <div class="dg-nav-content">
     <!-- new side navigation -->
 
     <h2><a href="/">Introduction</a></h2>
@@ -90,6 +92,6 @@
     <?php endwhile;
     wp_reset_postdata(); ?>
 
-
+    </div>    </div>
 
 </aside>

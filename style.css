@@ -10,16 +10,24 @@ License:        GNU General Public License
 License URI:    license.txt
 Text Domain:    tna-base
 */
+.hue-grey-light {
+    background-color: #ddd;
+}
 
 .dg-nav{
-    background-color: #fff;
+    background-color:  #ddd;
+padding:10px;
+}
+.dg-nav-content{
+    background-color:  #fff;
+    padding:10px;
 }
 .float-left-to-right{
-    float:left;
+    float:right;
 }
 
 @media (max-width: 768px){
     .float-left-to-right{
-        float:right;
+        float:left;
     }
 }
