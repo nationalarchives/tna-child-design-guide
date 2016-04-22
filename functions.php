@@ -51,3 +51,28 @@ add_action( 'wp_enqueue_scripts', 'tna_child_styles' );
 
 
 // functions specific to Design Guide child theme
+/**
+ * Embed Gists with a URL
+ *
+ * Usage:
+ * Paste a gist link into a blog post or page and it will be embedded eg:
+ * https://gist.github.com/username/fde1c809c01b0cfbf8f3cef339e4bd79
+ *
+ * If a gist has multiple files you can select one using a url in the following format:
+ * https://gist.github.com/2926827?file=embed-gist.php
+ *
+ */
+
+wp_embed_register_handler( 'gist', '/https?:\/\/gist\.github\.com\/([a-z0-9]+)(\?file=.*)?/i', 'bhww_embed_handler_gist' );
+
+function bhww_embed_handler_gist( $matches, $attr, $url, $rawattr ) {
+
+    $embed = sprintf(
+        '<script src="https://gist.github.com/%1$s.js%2$s"></script>',
+        esc_attr($matches[1]),
+        esc_attr($matches[2])
+    );
+
+    return apply_filters( 'embed_gist', $embed, $matches, $attr, $url, $rawattr );
+
+}
