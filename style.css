@@ -25,6 +25,9 @@ padding:10px;
 .float-left-to-right{
     float:right;
 }
+.dg-nav-content h2, .dg-nav-content h3{
+    border-bottom:1px solid  #ddd;
+}
 
 @media (max-width: 768px){
     .float-left-to-right{
