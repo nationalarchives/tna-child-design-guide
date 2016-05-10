@@ -25,6 +25,21 @@ padding:10px;
 .float-left-to-right{
     float:right;
 }
+.dg-nav-content h2, .dg-nav-content h3{
+    border-bottom:1px solid  #ddd;
+margin-bottom:20px;
+}
+
+
+.show-grid [class^=col-] {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    font-size: 0.8em;
+}
+
+
 
 @media (max-width: 768px){
     .float-left-to-right{

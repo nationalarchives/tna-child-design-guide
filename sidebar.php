@@ -6,39 +6,52 @@
         <div class="dg-nav-content">
     <!-- new side navigation -->
 
-    <h2><a href="/">Introduction</a></h2>
-    <!-- child pages below-->
+            <?php
+
+            // $thispost = gets id of current post, used to set navigation styles
+
+            $thispost = $wp_query->post->ID;
+
+            // $home_id = gets id of home page, used to set top level in navigation hierarchy
+
+            $home_id = get_option('page_on_front');
 
 
-
-
+if (is_front_page()){?>
+    <h2>Introduction</h2>
     <?php
 
-    $thispost = $wp_query->post->ID;
+}else {
+    ?>
+
+    <h2><a href="<?php echo(home_url('/'));?>">Introduction</a></h2>
 
 
-    $page_get = get_page_by_title('Design guide');
-
-    if ($page_get) {
-        $page_id = $page_get->ID;
-    }
-
+<?php
+}
 
     // loop through the sub-pages for the current page.
 
-    $childpages = new WP_Query(array(
-            'post_type' => 'page',
-            'post_parent' => $page_id,
+    $pages = new WP_Query(array(
+      'post_type' => 'page',
+//          'post_parent' => $home_id,
+       // for dev only 'category_name' => 'design-guide',
             'posts_per_page' => -1,
-           // 'post__not_in' => array(get_option('page_on_front')),
-            'orderby' => 'menu_order date',
-            'order' => 'ASC'
+           'post__not_in' => array(get_option('page_on_front')),
+            'orderby' => 'menu_order title',
+            'order' => 'ASC',
+        'post_parent' => 0
         )
     );
 
-    while ($childpages->have_posts()) : $childpages->the_post();
+    while ($pages->have_posts()) : $pages->the_post();
 
-        ?>
+$current = $pages->post->ID;
+
+            if ($current == $thispost) { ?>
+
+           <h3><?php the_title(); ?></h3>
+            <?php }else {?>
 
 
 
@@ -46,24 +59,25 @@
                 <?php the_title(); ?>
             </a></h3>
 
+            <?php }
 
 
-        <?php
         $child_page_id = get_the_ID();
-        // loop through the sub-pages for each child page as grandchildren.
-        $grandchildrenpages = new WP_Query(array(
+        // loop through the sub-pages for each child page to build nested navigation in sidebar.
+        $childrenpages = new WP_Query(array(
                 'post_type' => 'page',
                 'post_parent' => $child_page_id,
                 'posts_per_page' => -1,
     //                'cat' => -EXCLUDE_FROM_INDEX_PAGE,
                 'orderby' => 'menu_order date',
                 'order' => 'ASC'
+
             )
         );
-        if ($grandchildrenpages->have_posts()):?>
-            <ul class="">
+        if ($childrenpages->have_posts()):?>
+            <ul class="full">
                 <?php
-                while ($grandchildrenpages->have_posts()) : $grandchildrenpages->the_post();
+                while ($childrenpages->have_posts()) : $childrenpages->the_post();
 
                     $current = $post->ID;
 
@@ -75,7 +89,7 @@
 
                             ?>
 
-                            <?php the_title(); ?>
+                         <?php the_title(); ?>
 
 
                         <?php } else {
