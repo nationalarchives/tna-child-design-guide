@@ -75,7 +75,7 @@ $current = $pages->post->ID;
             )
         );
         if ($childrenpages->have_posts()):?>
-            <ul class="">
+            <ul class="full">
                 <?php
                 while ($childrenpages->have_posts()) : $childrenpages->the_post();
 

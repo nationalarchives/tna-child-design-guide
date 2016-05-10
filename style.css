@@ -27,6 +27,7 @@ padding:10px;
 }
 .dg-nav-content h2, .dg-nav-content h3{
     border-bottom:1px solid  #ddd;
+margin-bottom:20px;
 }
 
 @media (max-width: 768px){
