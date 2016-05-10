@@ -35,7 +35,7 @@ if (is_front_page()){?>
     $pages = new WP_Query(array(
       'post_type' => 'page',
 //          'post_parent' => $home_id,
-        'category_name' => 'design-guide',
+       // for dev only 'category_name' => 'design-guide',
             'posts_per_page' => -1,
            'post__not_in' => array(get_option('page_on_front')),
             'orderby' => 'menu_order title',
