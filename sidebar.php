@@ -106,6 +106,8 @@ $current = $pages->post->ID;
     <?php endwhile;
     wp_reset_postdata(); ?>
 
-    </div>    </div>
-
+    </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
 </aside>
