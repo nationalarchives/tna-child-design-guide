@@ -76,3 +76,48 @@ function bhww_embed_handler_gist( $matches, $attr, $url, $rawattr ) {
     return apply_filters( 'embed_gist', $embed, $matches, $attr, $url, $rawattr );
 
 }
+
+// Embeds HTML form code into page via shortcode without
+function form_meta_boxes() {
+        $meta_boxes[] = array (
+            'id' => 'embed-form-code',
+            'title' => 'Embed HTML form code via shortcode',
+            'pages' => 'page',
+            'context' => 'normal',
+            'priority' => 'high',
+            'fields' => array(
+                array(
+                    'name' => 'Paste your HTML here',
+                    'desc' => 'Use [form-code] shortcode to embed the form code into the page',
+                    'id' => 'form_code',
+                    'type' => 'textarea',
+                    'std' => ''
+                )
+            )
+        );
+        // Adds meta box to page
+        foreach ( $meta_boxes as $meta_box ) {
+            $form_box = new create_meta_box( $meta_box );
+        }
+}
+add_action( 'init', 'form_meta_boxes' );
+
+// [form-code]
+function embed_form() {
+    global $post;
+    $code = get_post_meta( $post->ID, 'form_code', true );
+    if ($code) {
+        return $code;
+    }
+}
+add_shortcode( 'form-code', 'embed_form' );
+
+// [include-form-code]
+function include_form_code ($atts) {
+	extract(shortcode_atts(array('code_file' => 'form.txt'), $atts));
+	if ($code_file) {
+		return file_get_contents( get_stylesheet_directory_uri() . '/forms/' . $code_file, FILE_USE_INCLUDE_PATH );
+	}
+}
+add_shortcode('include-form-code', 'include_form_code');
+
