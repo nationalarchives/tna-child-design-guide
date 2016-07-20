@@ -112,11 +112,12 @@ function embed_form() {
 }
 add_shortcode( 'form-code', 'embed_form' );
 
-// [include-form-code]
+// [include-form-code file="filename.txt"]
+// File must be added to folder name 'forms'
 function include_form_code ($atts) {
-	extract(shortcode_atts(array('code_file' => 'form.txt'), $atts));
-	if ($code_file) {
-		return file_get_contents( get_stylesheet_directory_uri() . '/forms/' . $code_file, FILE_USE_INCLUDE_PATH );
+	extract(shortcode_atts(array('file' => ''), $atts));
+	if ($file) {
+		return file_get_contents( get_stylesheet_directory_uri() . '/forms/' . $file, FILE_USE_INCLUDE_PATH );
 	}
 }
 add_shortcode('include-form-code', 'include_form_code');
