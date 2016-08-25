@@ -97,7 +97,7 @@ function form_meta_boxes() {
         );
         // Adds meta box to page
         foreach ( $meta_boxes as $meta_box ) {
-            $form_box = new create_meta_box( $meta_box );
+            $form_box = new CreateMetaBox( $meta_box );
         }
 }
 add_action( 'init', 'form_meta_boxes' );
