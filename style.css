@@ -10,6 +10,24 @@ License:        GNU General Public License
 License URI:    license.txt
 Text Domain:    tna-base
 */
+.intro{
+    width:100%;
+    height:300px;
+    background-color: #008484;
+    position: relative;
+}
+.intro h1{
+    color:#fff;
+    font-size: 4em;
+    text-align: right;
+    position: absolute;
+    bottom:0;
+    right:0;
+    padding: 10px;
+}
+.intro .content{
+    display:none;
+}
 .hue-grey-light {
     background-color: #ddd;
 }
@@ -44,5 +62,36 @@ margin-bottom:20px;
 @media (max-width: 768px){
     .float-left-to-right{
         float:left;
+    }
+    .intro{
+        width:100%;
+        min-height:120px;
+        height:auto;
+        background-color: #008484;
+        position: relative;
+    }
+    .intro h1{
+        color:#fff;
+        font-size: 3em;
+        text-align: center;
+        position: relative;
+        padding: 10px;
+    }
+    .intro .content{
+        display:block;
+        text-align: center;
+        padding:5px;
+        width:100%;
+        background-color:#2d3b59;
+    }
+    .intro ul li{
+        display:  inline-block;
+        margin: 0;
+        padding: 0 1em 0 1.5em;
+        list-style-image: none;
+        background: url(img/menu-link.png) left center no-repeat;
+    }
+    .intro .content a{
+        color:#fff;
     }
 }

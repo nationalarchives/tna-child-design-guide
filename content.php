@@ -6,20 +6,18 @@
         <?php
 
     if (is_page("design-guide")){
+        ?>
 
-        $image_id = get_post_thumbnail_id($page->ID);
-        $image_url = wp_get_attachment_image_src($image_id, 'full', false);
+        <div class="intro"><h1><?php the_title(); ?></h1>
+            <ul class="content">
+            <li><a href="#sidebar">Guidelines</a></li>
+            </ul>
+
+        </div>
 
 
-        if ($image_url) {
 
-            ?>
-
-            <img src="<?php echo(make_path_relative($image_url[0])); ?>" width="100%">
-
-            <h1 style="display:none;"><?php the_title(); ?></h1>
-
-        <?php }
+        <?php
     }else{?>
 
 
