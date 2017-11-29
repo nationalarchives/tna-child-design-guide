@@ -24,7 +24,7 @@ if (is_front_page()){?>
 }else {
     ?>
 
-    <h2><a href="<?php echo(home_url('/'));?>">Introduction</a></h2>
+    <h2><a href="/design-guide/">Introduction</a></h2>
 
 
 <?php
