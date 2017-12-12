@@ -55,7 +55,7 @@ $current = $pages->post->ID;
 
 
 
-        <h3><a href="<?php echo (make_path_relative(get_page_link())); ?>">
+        <h3><a href="<?php echo (get_page_link()); ?>">
                 <?php the_title(); ?>
             </a></h3>
 
@@ -88,13 +88,12 @@ $current = $pages->post->ID;
 
 
                             ?>
-
                          <?php the_title(); ?>
 
 
                         <?php } else {
                             ?>
-                            <a href="<?php echo (make_path_relative(get_page_link())); ?>">
+                            <a href="<?php echo (get_page_link()); ?>">
                                 <?php the_title(); ?>
                             </a>
                         <?php } ?>
